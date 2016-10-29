@@ -1,0 +1,70 @@
+<!-- <div ng-controller="askController as vm"> -->
+<div>
+
+<div content-for="navbarReset">
+	<div ng-hide="vm.currentStep <= 1" ng-click="vm.gotoStep(vm.currentStep - 1)" class="btn sidebar-toggle">
+		<i class="fa fa-chevron-left"></i> Kembali
+	</div>
+</div>
+
+<div content-for="navbarAction">
+    <div ng-hide="vm.currentStep >= vm.steps.length" ng-click="vm.gotoStep(vm.currentStep + 1)" class="btn sidebar-right-toggle">
+    	Lanjut <i class="fa fa-chevron-right"></i>
+  	</div>
+
+  	<div ng-hide="vm.currentStep != vm.steps.length" ng-click="vm.save()" class="btn sidebar-right-toggle">
+    	Lanjut <i class="fa fa-chevron-right"></i>
+  	</div>
+</div>
+
+<div class="scrollable">  
+  <div class="scrollable-content">
+
+    <div class="list-group">
+     
+      <div class="list-group-item" >
+      	<!-- <div id="wizard-step-container">
+          <ul class="nav nav-pills nav-justified">
+            <li ng-repeat="step in vm.steps" ng-class="{'active':step.step == vm.currentStep}"><a ng-click="vm.gotoStep(step.step)" href="">{{step.step}}. {{step.name}}</a></li>
+          </ul>
+        </div> -->
+      	
+      	<div id="wizard-content-container">
+          <ng-include src="vm.getStepTemplate()"></ng-include>
+        </div>
+
+        <div id="">
+              <!-- <button ng-disabled="vm.currentStep <= 1" class="btn btn-default" name="previous" type="button" ng-click="vm.gotoStep(vm.currentStep - 1)"><i class="fa fa-arrow-left"></i> Previous step</button> -->
+              <!-- <button ng-disabled="vm.currentStep >= vm.steps.length" class="btn btn-info" name="next" type="button" ng-click="vm.gotoStep(vm.currentStep + 1)">Lanjut <i class="fa fa-arrow-right"></i></button>
+
+            <button ng-disabled="vm.currentStep != vm.steps.length" class="btn btn-success" name="next" type="button" ng-click="vm.save()"> <i class="fa fa-floppy-o"></i> Save</button> -->
+        </div>
+      </div>
+
+      <div class="list-group-item">
+      	<form class="form-inline" role="form">
+              <div class="form-group">
+                  <label for="nama">Nama : </label> 
+                  <span>{{reg.nama}}</span>
+              </div>
+              <div class="form-group">
+                  <label for="umur">Umur : </label>
+                  <span>{{reg.umur}}</span>
+              </div>
+              <div class="form-group">
+                  <label for="goldar">Golongan Darah : </label>
+                  <span style="text-transform: uppercase;">{{reg.goldar}}</span>
+              </div>
+              <div class="form-group">
+                  <label >Gender : </label>
+                  <span>{{reg.gender}}</span>
+              </div>
+          </form>
+      </div>
+
+     </div>
+
+  </div>
+</div>
+
+</div>
